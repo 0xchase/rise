@@ -1,0 +1,3 @@
+cd rizin-sys
+cargo build
+cd ..
