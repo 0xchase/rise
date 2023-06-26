@@ -2,6 +2,7 @@
 name = "rizin-sys"
 version = "0.1.0"
 edition = "2021"
+links = "rz_core"
 
 [build-dependencies]
 bindgen = "0.53.1"

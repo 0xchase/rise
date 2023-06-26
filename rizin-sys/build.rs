@@ -10,9 +10,33 @@ fn main() {
     let build_path = build_path.join("build/");
     let build_path = build_path.to_str().unwrap();
 
-    println!("cargo:rustc-link-lib=rz");
-    println!("cargo:rustc-link-search=native={}", build_path);
     build("../rizin", build_path);
+
+    println!("cargo:rustc-link-lib=rz_analysis");
+    /*println!("cargo:rustc-link-lib=rz_asm");
+    println!("cargo:rustc-link-lib=rz_bin");
+    println!("cargo:rustc-link-lib=rz_bp");
+    println!("cargo:rustc-link-lib=rz_config");
+    println!("cargo:rustc-link-lib=rz_cons");*/
+    println!("cargo:rustc-link-lib=rz_core");
+    /*println!("cargo:rustc-link-lib=rz_crypto");
+    println!("cargo:rustc-link-lib=rz_debug");
+    println!("cargo:rustc-link-lib=rz_demangler");
+    println!("cargo:rustc-link-lib=rz_diff");
+    println!("cargo:rustc-link-lib=rz_egg");
+    println!("cargo:rustc-link-lib=rz_flag");
+    println!("cargo:rustc-link-lib=rz_hash");
+    println!("cargo:rustc-link-lib=rz_il");
+    println!("cargo:rustc-link-lib=rz_io");
+    println!("cargo:rustc-link-lib=rz_lang");
+    println!("cargo:rustc-link-lib=rz_magic");
+    println!("cargo:rustc-link-lib=rz_main");
+    println!("cargo:rustc-link-lib=rz_parse");
+    println!("cargo:rustc-link-lib=rz_reg");
+    println!("cargo:rustc-link-lib=rz_search");
+    println!("cargo:rustc-link-lib=rz_reg");*/
+
+    println!("cargo:rustc-link-search=native={}", build_path);
 
     // Generate Rizin bindings
 
@@ -21,7 +45,14 @@ fn main() {
 
     let bindings = bindgen::Builder::default()
         .header("wrapper.h")
-        .clang_arg("-I/opt/homebrew/include/librz/**")
+        .blacklist_item("FP_NAN")
+        .blacklist_item("FP_INFINITE")
+        .blacklist_item("FP_ZERO")
+        .blacklist_item("FP_SUBNORMAL")
+        .blacklist_item("FP_NORMAL")
+        .clang_arg("-I../rizin/librz/include")
+        .clang_arg("-I../rizin/librz/util/sdb/src/")
+        .clang_arg("-I../rizin/build")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
         .generate()
         .expect("Unable to generate bindings");

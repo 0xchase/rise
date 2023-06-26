@@ -1,12 +1,7 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
+include!(concat!(env!("OUT_DIR"),"/bindings.rs"));
 
-#[repr(C)]
-struct RzAnalysis;
+fn test1() {
 
-extern "C" {
-    fn rz_analysis_set_limits(analysis: *mut RzAnalysis, from: u64, to: u64);
 }
 
 #[cfg(test)]
@@ -16,7 +11,6 @@ mod tests {
     #[test]
     fn it_works() {
         unsafe {
-            rz_analysis_set_limits(&mut RzAnalysis, 0, 1);
         }
         assert_eq!(4, 4);
     }
