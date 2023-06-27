@@ -1,0 +1,11 @@
+[package]
+name = "rz-analysis"
+version = "0.1.0"
+edition = "2021"
+links = "rz_analysis"
+
+[build-dependencies]
+bindgen = "0.53.1"
+
+[dependencies]
+rz-sys = { path = "../rz_sys" }

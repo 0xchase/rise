@@ -1,14 +1,19 @@
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
+use rz_core::*;
+use rz_analysis::*;
+
+pub struct Rise {
+    core: RzCore
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+impl Rise {
+    pub fn new() -> Self {
+        Self {
+            core: RzCore::new()
+        }
+    }
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+    pub fn load(&mut self, path: &str) {
+        println!("Loading a thing");
+        self.core.open_load(path);
     }
 }

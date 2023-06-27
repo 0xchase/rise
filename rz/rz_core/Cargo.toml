@@ -1,0 +1,8 @@
+[package]
+name = "rz-core"
+version = "0.1.0"
+edition = "2021"
+links = "rz_core"
+
+[dependencies]
+rz-sys = { path = "../rz_sys" }

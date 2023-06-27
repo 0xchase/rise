@@ -1,0 +1,7 @@
+[workspace]
+
+members = [
+	"rz_sys",
+	"rz_analysis",
+	"rz_core",
+]

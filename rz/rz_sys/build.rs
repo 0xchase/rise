@@ -10,15 +10,15 @@ fn main() {
     let build_path = build_path.join("build/");
     let build_path = build_path.to_str().unwrap();
 
-    build("../rizin", build_path);
+    // build("rizin", build_path);
 
-    println!("cargo:rustc-link-lib=rz_analysis");
+    //println!("cargo:rustc-link-lib=rz_analysis");
     /*println!("cargo:rustc-link-lib=rz_asm");
     println!("cargo:rustc-link-lib=rz_bin");
     println!("cargo:rustc-link-lib=rz_bp");
     println!("cargo:rustc-link-lib=rz_config");
     println!("cargo:rustc-link-lib=rz_cons");*/
-    println!("cargo:rustc-link-lib=rz_core");
+    // println!("cargo:rustc-link-lib=rz_core");
     /*println!("cargo:rustc-link-lib=rz_crypto");
     println!("cargo:rustc-link-lib=rz_debug");
     println!("cargo:rustc-link-lib=rz_demangler");
@@ -50,9 +50,9 @@ fn main() {
         .blacklist_item("FP_ZERO")
         .blacklist_item("FP_SUBNORMAL")
         .blacklist_item("FP_NORMAL")
-        .clang_arg("-I../rizin/librz/include")
-        .clang_arg("-I../rizin/librz/util/sdb/src/")
-        .clang_arg("-I../rizin/build")
+        .clang_arg("-Irizin/librz/include")
+        .clang_arg("-Irizin/librz/util/sdb/src/")
+        .clang_arg("-Irizin/build_include")
         .parse_callbacks(Box::new(bindgen::CargoCallbacks))
         .generate()
         .expect("Unable to generate bindings");
@@ -71,6 +71,7 @@ pub fn build(project_dir: &str, build_dir: &str) {
 fn run_meson(lib: &str, dir: &str) {
     if !is_configured(dir) {
         run_command(lib, "meson", &[".", dir]);
+        run_command(lib, "meson", &["build_include", dir]);
     }
     run_command(dir, "ninja", &[]);
 }
