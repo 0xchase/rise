@@ -7,4 +7,5 @@ edition = "2021"
 
 [dependencies]
 rz-analysis = { path = "../rz/rz_analysis" }
+rz-bin = { path = "../rz/rz_bin" }
 rz-core = { path = "../rz/rz_core" }

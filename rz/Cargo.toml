@@ -3,5 +3,6 @@
 members = [
 	"rz_sys",
 	"rz_analysis",
+	"rz_bin",
 	"rz_core",
 ]
