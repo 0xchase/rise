@@ -256,6 +256,7 @@ dependencies = [
  "rz-analysis",
  "rz-bin",
  "rz-core",
+ "rz-io",
 ]
 
 [[package]]
@@ -284,6 +285,14 @@ dependencies = [
 name = "rz-core"
 version = "0.1.0"
 dependencies = [
+ "rz-sys",
+]
+
+[[package]]
+name = "rz-io"
+version = "0.1.0"
+dependencies = [
+ "bindgen",
  "rz-sys",
 ]
 

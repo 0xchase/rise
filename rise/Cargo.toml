@@ -9,3 +9,4 @@ edition = "2021"
 rz-analysis = { path = "../rz/rz_analysis" }
 rz-bin = { path = "../rz/rz_bin" }
 rz-core = { path = "../rz/rz_core" }
+rz-io = { path = "../rz/rz_io" }

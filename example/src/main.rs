@@ -5,4 +5,5 @@ fn main() {
 
     let mut core = Rise::new();
     core.load("/bin/ls");
+    core.test();
 }
