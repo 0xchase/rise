@@ -14,6 +14,7 @@ Rise is a binary analysis framework written in Rust, built on [rizin](https://gi
 ### Emulation
  - Efficiently emulate binaries using the IL
  - Add hooks for relevant system calls and library calls
+ - Simple interactive debugging using the emulator
 
 ### User Interface
  - **Summary View**: An automated report on the functionality of the binary
